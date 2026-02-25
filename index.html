@@ -9,7 +9,7 @@
 :root{
   --bg:#f0efeb;--surface:#fff;--border:#dddad2;
   --text:#1a1a2e;--text2:#555;--text3:#999;
-  --pereira:#c0392b;--iriart:#2d7a3a;--etcheto:#e39fb6;
+  --pereira:#c0392b;--iriart:#2d7a3a;--etcheto:#e8a9bf;
   --etchegaray:#1a3a6e;--lesellier:#5a2d14;
   --part:#e6a817;--abst:#c0392b;--blanc:#7f8c8d;--nul:#95a5a6;
   --gauche:#2d7a3a;--centre:#1a3a6e;--rn:#5a2d14;
@@ -188,7 +188,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
         <g id="mps3"></g><g id="mls3"></g>
       </svg>
       <div class="map-overlay-title">
-        <span class="mot-name" style="color:#c0392b">Liste Pereira (LFI)</span>
+        <span class="mot-name" style="color:#c0392b">Pereira (LFI)</span>
       </div>
       <div class="mtt" id="mtts3"></div>
     </div>
@@ -278,14 +278,14 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
         <g id="mps5"></g><g id="mls5"></g>
       </svg>
       <div class="map-overlay-title">
-        <span class="mot-name" style="color:#c0436e">Liste Etcheto</span>
+        <span class="mot-name" style="color:#e8a9bf">Etcheto</span>
       </div>
       <div class="mtt" id="mtts5"></div>
     </div>
     <div class="map-stats">
     <div class="mstat">
       <div class="mstat-lbl">Score global</div>
-      <div class="mstat-val" id="s5pct" style="color:#c0436e">–</div>
+      <div class="mstat-val" id="s5pct" style="color:#e8a9bf">–</div>
       <div class="mstat-sub" id="s5pct-sub"></div>
     </div>
     <div class="mstat">
@@ -295,7 +295,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
     </div>
     <div class="mstat">
       <div class="mstat-lbl">Meilleur BV</div>
-      <div class="mstat-val" id="s5bv1" style="color:#c0436e">–</div>
+      <div class="mstat-val" id="s5bv1" style="color:#e8a9bf">–</div>
       <div class="mstat-sub" id="s5bv1-sub"></div>
     </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:3px">
@@ -323,7 +323,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
         <g id="mps6"></g><g id="mls6"></g>
       </svg>
       <div class="map-overlay-title">
-        <span class="mot-name" style="color:#1a3a6e">Liste Etchegaray</span>
+        <span class="mot-name" style="color:#1a3a6e">Etchegaray – Centre et Droite</span>
       </div>
       <div class="mtt" id="mtts6"></div>
     </div>
@@ -368,7 +368,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
         <g id="mps7"></g><g id="mls7"></g>
       </svg>
       <div class="map-overlay-title">
-        <span class="mot-name" style="color:#5a2d14">Liste Lesellier – Rassemblement National</span>
+        <span class="mot-name" style="color:#5a2d14">Lesellier – Rassemblement National</span>
       </div>
       <div class="mtt" id="mtts7"></div>
     </div>
@@ -444,21 +444,21 @@ const GEOJSON={"type":"FeatureCollection","features":[{"type":"Feature","propert
 const SHEET_ID='1nxp3CwXHkbcdmAz5PBgHGhZ2rtfXRwhl0ci1971VwX8';
 const SHEET_NAME='1erTour';
 const REFRESH_S=60, SLIDE_MS=12000, TOTAL_BV=30, N_SLIDES=8;
-const SEUIL_2ND=0.10, SEUIL_PROP=0.05;
+const SEUIL_2ND=0.10, SEUIL_FUSION=0.05;  // 10% exprimés = 2nd tour, 5% exprimés = fusion autorisée
 const BV_NAMES={"1": "Mairie", "2": "Cathédrale", "3": "Lauga", "4": "Petit Bayonne", "5": "Gare", "6": "Als. Lorraine", "7": "St-Esprit Jaurès", "8": "St Léon", "9": "Lahubiague", "10": "Marracq Panorama", "11": "Marracq Biraben", "12": "Polo Beyris Sud", "13": "Polo Beyris Nord", "14": "Saint Amand", "15": "Prissé", "16": "Mousserolles", "17": "Balichon Ouest", "18": "Balichon Est", "19": "Arènes Tribunal", "20": "Arènes Ouest", "21": "St Bernard", "22": "Citadelle", "23": "Coumères", "24": "Caradoc", "25": "Habas", "26": "Ste Croix / Stade DD", "27": "Pl. des Gascons", "28": "Ste Croix Breuer Est", "29": "Séqué", "30": "Arrousets"};
 
-// Couleurs corrigées : LFI=rouge, Etchegaray=bleu
+// Couleurs : LFI=rouge, Etchegaray=bleu, Etcheto=rose clair (contraste avec LFI rouge)
 const LISTES=[
-  {key:'pereira',    nom:'Pereira (LFI)', long:'Liste Pereira',        hex:'#c0392b'},
+  {key:'pereira',    nom:'Pereira (LFI)', long:'Pereira (LFI)',        hex:'#c0392b'},
   {key:'iriart',     nom:'Iriart (BM)',   long:'Bayonne en Mouvement', hex:'#2d7a3a'},
-  {key:'etcheto',    nom:'Etcheto',       long:'Liste Etcheto',        hex:'#e39fb6'},
-  {key:'etchegaray', nom:'Etchegaray',    long:'Liste Etchegaray',     hex:'#1a3a6e'},
-  {key:'lesellier',  nom:'Lesellier (RN)',long:'Liste Lesellier',      hex:'#5a2d14'},
+  {key:'etcheto',    nom:'Etcheto',       long:'Etcheto',              hex:'#e8a9bf'},
+  {key:'etchegaray', nom:'Etchegaray',    long:'Etchegaray',           hex:'#1a3a6e'},
+  {key:'lesellier',  nom:'Lesellier (RN)',long:'Lesellier (RN)',       hex:'#5a2d14'},
 ];
 const CANDS=[
   {sid:'s3',key:'pereira',    hex:'#c0392b'},
   {sid:'s4',key:'iriart',     hex:'#2d7a3a'},
-  {sid:'s5',key:'etcheto',    hex:'#c0436e'},
+  {sid:'s5',key:'etcheto',    hex:'#e8a9bf'},
   {sid:'s6',key:'etchegaray', hex:'#1a3a6e'},
   {sid:'s7',key:'lesellier',  hex:'#5a2d14'},
 ];
@@ -466,7 +466,7 @@ const CANDS=[
 // segs[0]=bas, segs[dernière]=haut dans l'empilement
 const BLOCS=[
   {id:'gauche',name:'Gauche',color:'#2d7a3a',sub:'BM + Etcheto + LFI',
-   segs:[{key:'iriart',hex:'#2d7a3a',label:'BM'},{key:'etcheto',hex:'#c0436e',label:'Etcheto'},{key:'pereira',hex:'#c0392b',label:'LFI'}]},
+   segs:[{key:'iriart',hex:'#2d7a3a',label:'BM'},{key:'etcheto',hex:'#e8a9bf',label:'Etcheto'},{key:'pereira',hex:'#c0392b',label:'LFI'}]},
   {id:'centre',name:'Centre et Droite',color:'#1a3a6e',sub:'Etchegaray',
    segs:[{key:'etchegaray',hex:'#1a3a6e',label:''}]},
   {id:'rn',name:'RN',color:'#5a2d14',sub:'Lesellier',
@@ -661,9 +661,10 @@ function drawCandSlide(g,cand){
 // ── SLIDE 8 ──
 function drawSlide8(g){
   setBadge('s8',g.nbDep);
-  // Seuils corrects : 10% inscrits pour 2nd tour, 5% exprimés pour RP
-  var seuilIns=g.inscrits*SEUIL_2ND;   // 10% des inscrits
-  var seuilExp=g.exprimes*SEUIL_PROP;  // 5% des exprimés
+  // Règle française : 10% des suffrages exprimés pour se maintenir au 2nd tour
+  //                   5% des suffrages exprimés pour pouvoir fusionner
+  var seuil2nd=g.exprimes*SEUIL_2ND;
+  var seuilFusion=g.exprimes*SEUIL_FUSION;
   var complet=g.nbDep===TOTAL_BV;
 
   // Classement
@@ -673,23 +674,21 @@ function drawSlide8(g){
     var voix=g[l.key]||0;
     var p=pct(voix,g.exprimes);
     var hasMaj=g.exprimes>0&&voix>g.exprimes/2;
-    // TOUTES les listes >= 10% inscrits sont qualifiées, sans exception
-    var q2nd=g.inscrits>0&&voix>=seuilIns;
-    var qPR=g.exprimes>0&&voix>=seuilExp;
+    var q2nd=g.exprimes>0&&voix>=seuil2nd;        // >= 10% exprimés
+    var qFusion=g.exprimes>0&&voix>=seuilFusion;  // >= 5% exprimés
     var badge='',bc='';
-    if(g.inscrits>0&&g.exprimes>0){
+    if(g.exprimes>0){
       if(hasMaj){
         bc='ok';badge='\u2605 Majorité absolue';
       } else if(complet){
         bc=q2nd?'ok':'no';
         badge=q2nd?'\u2713 2nd tour':'\u2717 Éliminé(e)';
       } else {
-        // Résultats partiels : provisoire
         bc='prov';
         badge=q2nd?'~ 2nd tour (prov.)':'~ Éliminé (prov.)';
       }
-      // Mention RP si > 5% exprimés (sauf majorité absolue)
-      if(!hasMaj&&qPR) badge+='\u00a0\u00b7 RP';
+      // Mention fusion possible si >= 5% exprimés (sauf si déjà qualifié ou éliminé)
+      if(!hasMaj&&!q2nd&&qFusion) badge+='\u00a0\u00b7 fusion possible';
     }
     var div=document.createElement('div'); div.className='cls-row';
     var inner='<span class="cls-rank">'+(i+1)+'</span>';
