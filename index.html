@@ -794,8 +794,9 @@ function drawSlide8(g){
     if(total>0){
       var vtxt=document.createElementNS('http://www.w3.org/2000/svg','text');
       vtxt.setAttribute('x',cx);vtxt.setAttribute('y',yBase+50);
-      vtxt.setAttribute('text-anchor','middle');vtxt.setAttribute('font-size','11');
-      vtxt.setAttribute('fill','#bbb');vtxt.setAttribute('font-family','Source Sans 3,sans-serif');
+      vtxt.setAttribute('text-anchor','middle');vtxt.setAttribute('font-size','16');
+      vtxt.setAttribute('font-weight','600');
+      vtxt.setAttribute('fill','#555');vtxt.setAttribute('font-family','Source Sans 3,sans-serif');
       vtxt.textContent=fn(total)+' voix';svg.appendChild(vtxt);
     }
   });
