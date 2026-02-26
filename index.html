@@ -90,25 +90,24 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
 .blocs-svg-wrap{flex:1;min-height:0;position:relative}
 .blocs-svg-wrap svg{width:100%;height:100%;display:block;overflow:visible}
 
-/* SLIDE 9 — TABLEAU */
-#s9 .sbody{display:flex;flex-direction:column;flex:1;padding:clamp(6px,1vh,14px) clamp(10px,1.8vw,30px) clamp(30px,5vh,50px);overflow:hidden;min-height:0}
-.tbl-wrap{flex:1;overflow:auto;min-height:0;border-radius:8px;border:1px solid var(--border)}
-.tbl-wrap::-webkit-scrollbar{width:5px;height:5px}
-.tbl-wrap::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
-table.dtbl{border-collapse:collapse;width:100%;font-size:clamp(9px,.82vw,13px);white-space:nowrap}
-.dtbl thead th{position:sticky;top:0;background:var(--text);color:#fff;padding:clamp(5px,.7vh,9px) clamp(6px,.75vw,11px);font-weight:700;text-align:right;z-index:2;font-size:clamp(8px,.72vw,11px);letter-spacing:.3px}
-.dtbl thead th:first-child{text-align:left;position:sticky;left:0;z-index:3}
-.dtbl thead th.ch{border-bottom:3px solid}
+/* SLIDE 9 — TABLEAU tout visible, pas de scroll */
+#s9 .sbody{display:flex;flex-direction:column;flex:1;padding:clamp(4px,.7vh,10px) clamp(8px,1.4vw,22px) clamp(28px,4.5vh,46px);overflow:hidden;min-height:0;gap:clamp(3px,.4vh,6px)}
+.tbl-wrap{flex:1;overflow:hidden;min-height:0;border-radius:8px;border:1px solid var(--border);display:flex;flex-direction:column}
+table.dtbl{border-collapse:collapse;width:100%;table-layout:fixed}
+/* Hauteur des lignes calculée pour tenir 32 lignes (30 BV + thead + total) dans l'espace dispo */
+.dtbl thead tr{display:table-row}
+.dtbl thead th{background:var(--text);color:#fff;padding:clamp(3px,.45vh,6px) clamp(3px,.4vw,6px);font-weight:700;text-align:right;font-size:clamp(7px,.6vw,10px);letter-spacing:.2px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.2}
+.dtbl thead th:first-child{text-align:left}
+.dtbl thead th.ch{border-bottom:2px solid}
+.dtbl tbody{display:table-row-group}
 .dtbl tbody tr:nth-child(even){background:#f8f7f4}
-.dtbl tbody tr:hover{background:#eef5ee}
-.dtbl tbody td{padding:clamp(4px,.55vh,7px) clamp(6px,.75vw,11px);border-bottom:1px solid var(--border);text-align:right;font-variant-numeric:tabular-nums}
-.dtbl tbody td:first-child{text-align:left;font-weight:700;font-size:clamp(9px,.78vw,12px);position:sticky;left:0;background:inherit;z-index:1;border-right:2px solid var(--border)}
-.dtbl tbody tr.total-row td{font-weight:900;background:#f0efeb;border-top:2px solid var(--text);font-size:clamp(10px,.88vw,14px)}
-.dtbl tbody tr.total-row td:first-child{background:#f0efeb}
-.pct-cell{color:var(--text2);font-size:clamp(8px,.68vw,10px)}
-.tbl-footer{flex-shrink:0;display:flex;align-items:center;justify-content:flex-end;gap:clamp(8px,1vw,16px);padding-top:clamp(4px,.5vh,7px);font-size:clamp(8px,.68vw,11px);color:var(--text3)}
-.tbl-leg{display:flex;align-items:center;gap:4px}
-.tbl-leg-dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.dtbl tbody td{padding:clamp(2px,.35vh,5px) clamp(3px,.4vw,6px);border-bottom:1px solid #eee;text-align:right;font-variant-numeric:tabular-nums;font-size:clamp(7px,.62vw,10px);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.25}
+.dtbl tbody td:first-child{text-align:left;font-weight:700}
+.dtbl tbody td.pv{font-size:clamp(6px,.52vw,8.5px);color:var(--text3);display:block;line-height:1}
+.dtbl tbody tr.total-row td{font-weight:900;background:#e8e6e0;border-top:2px solid var(--text);font-size:clamp(8px,.68vw,11px)}
+.tbl-footer{flex-shrink:0;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(6px,.8vw,12px);font-size:clamp(7px,.62vw,10px);color:var(--text3)}
+.tbl-leg{display:flex;align-items:center;gap:3px}
+.tbl-leg-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
 
 /* CONTROLS */
 .ctrl{position:fixed;bottom:clamp(5px,1vh,11px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:clamp(4px,.6vw,9px);background:rgba(255,255,255,.96);border:1px solid var(--border);border-radius:40px;padding:clamp(4px,.5vh,7px) clamp(9px,1.2vw,16px);box-shadow:0 2px 14px rgba(0,0,0,.13);z-index:500;white-space:nowrap}
@@ -224,7 +223,7 @@ table.dtbl{border-collapse:collapse;width:100%;font-size:clamp(9px,.82vw,13px);w
       <div class="mstat-sub" id="s3vx-sub"></div>
     </div>
     <div class="mstat">
-      <div class="mstat-lbl">Meilleur BV</div>
+      <div class="mstat-lbl">Meilleur bureau</div>
       <div class="mstat-val" id="s3bv1" style="color:#c0392b">–</div>
       <div class="mstat-sub" id="s3bv1-sub"></div>
     </div>
@@ -269,7 +268,7 @@ table.dtbl{border-collapse:collapse;width:100%;font-size:clamp(9px,.82vw,13px);w
       <div class="mstat-sub" id="s4vx-sub"></div>
     </div>
     <div class="mstat">
-      <div class="mstat-lbl">Meilleur BV</div>
+      <div class="mstat-lbl">Meilleur bureau</div>
       <div class="mstat-val" id="s4bv1" style="color:#2d7a3a">–</div>
       <div class="mstat-sub" id="s4bv1-sub"></div>
     </div>
@@ -314,7 +313,7 @@ table.dtbl{border-collapse:collapse;width:100%;font-size:clamp(9px,.82vw,13px);w
       <div class="mstat-sub" id="s5vx-sub"></div>
     </div>
     <div class="mstat">
-      <div class="mstat-lbl">Meilleur BV</div>
+      <div class="mstat-lbl">Meilleur bureau</div>
       <div class="mstat-val" id="s5bv1" style="color:#e8a9bf">–</div>
       <div class="mstat-sub" id="s5bv1-sub"></div>
     </div>
@@ -359,7 +358,7 @@ table.dtbl{border-collapse:collapse;width:100%;font-size:clamp(9px,.82vw,13px);w
       <div class="mstat-sub" id="s6vx-sub"></div>
     </div>
     <div class="mstat">
-      <div class="mstat-lbl">Meilleur BV</div>
+      <div class="mstat-lbl">Meilleur bureau</div>
       <div class="mstat-val" id="s6bv1" style="color:#1a3a6e">–</div>
       <div class="mstat-sub" id="s6bv1-sub"></div>
     </div>
@@ -404,7 +403,7 @@ table.dtbl{border-collapse:collapse;width:100%;font-size:clamp(9px,.82vw,13px);w
       <div class="mstat-sub" id="s7vx-sub"></div>
     </div>
     <div class="mstat">
-      <div class="mstat-lbl">Meilleur BV</div>
+      <div class="mstat-lbl">Meilleur bureau</div>
       <div class="mstat-val" id="s7bv1" style="color:#5a2d14">–</div>
       <div class="mstat-sub" id="s7bv1-sub"></div>
     </div>
@@ -855,73 +854,99 @@ function drawSlide8(g){
   });
 }
 
-// ── SLIDE 9 — TABLEAU DÉTAILLÉ ──
+// ── SLIDE 9 — TABLEAU DÉTAILLÉ (tout visible, pas de scroll) ──
 function drawSlide9(){
   setBadge('s9',globals().nbDep);
   var g=globals();
   var thead=document.getElementById('dtbl-head');
   var tbody=document.getElementById('dtbl-body');
   var footer=document.getElementById('tbl-footer');
-  // En-têtes
-  thead.innerHTML='<tr>'
-    +'<th style="min-width:clamp(100px,12vw,160px)">Bureau de vote</th>'
-    +'<th>Inscrits</th>'
-    +'<th>Votants</th>'
-    +'<th>Part. %</th>'
-    +'<th>Exprimés</th>'
-    +'<th class="ch" style="border-color:#2d7a3a">BM<br>Iriart</th>'
-    +'<th class="ch" style="border-color:#c0436e">Etcheto</th>'
-    +'<th class="ch" style="border-color:#c0392b">LFI<br>Pereira</th>'
-    +'<th class="ch" style="border-color:#1a3a6e">Etchegaray</th>'
-    +'<th class="ch" style="border-color:#5a2d14">RN<br>Lesellier</th>'
-    +'<th style="opacity:.6">Blancs</th>'
-    +'<th style="opacity:.6">Nuls</th>'
-    +'</tr>';
-  // Lignes par BV triés par numéro
+
+  // Largeurs en % : BV=20%, Inscrits=7%, Votants=7%, Part=6%, Exprimés=7%, 5 listes=7% chacune, Blancs=5%, Nuls=5%
+  // Total = 20+7+7+6+7+35+5+5 = 92% → OK (un peu de marge)
+  var cols=[
+    {w:'19%',lbl:'Bureau de vote',align:'left'},
+    {w:'7%', lbl:'Inscrits',align:'right'},
+    {w:'7%', lbl:'Votants',align:'right'},
+    {w:'6%', lbl:'Part.',align:'right'},
+    {w:'7%', lbl:'Exprimés',align:'right'},
+    {w:'7%', lbl:'Iriart',align:'right',color:'#2d7a3a'},
+    {w:'7%', lbl:'Etcheto',align:'right',color:'#c0436e'},
+    {w:'7%', lbl:'Pereira',align:'right',color:'#c0392b'},
+    {w:'8%', lbl:'Etchegaray',align:'right',color:'#1a3a6e'},
+    {w:'7%', lbl:'Lesellier',align:'right',color:'#5a2d14'},
+    {w:'5%', lbl:'Blancs',align:'right'},
+    {w:'5%', lbl:'Nuls',align:'right'},
+  ];
+  // colgroup pour largeurs fixes
+  var tbl=document.getElementById('dtbl');
+  var cg=tbl.querySelector('colgroup')||document.createElement('colgroup');
+  cg.innerHTML=cols.map(function(c){return '<col style="width:'+c.w+'">';}).join('');
+  if(!tbl.querySelector('colgroup'))tbl.insertBefore(cg,tbl.firstChild);
+
+  var hrow='<tr>';
+  cols.forEach(function(c){
+    var st='text-align:'+c.align+';';
+    if(c.color) st+='border-bottom:2px solid '+c.color+';';
+    hrow+='<th style="'+st+'">'+c.lbl+'</th>';
+  });
+  hrow+='</tr>';
+  thead.innerHTML=hrow;
+
+  // Lignes BV
   var rows=data.slice().sort(function(a,b){return a.bv-b.bv;});
   tbody.innerHTML='';
+
+  // Fonction cellule voix + % en dessous
+  function cv(v,d){
+    if(v===null) return '<td>–</td>';
+    var p=pct(v,d);
+    return '<td><b>'+fn(v)+'</b>'+(p!==null?'<span class="pv">'+fp(p,0)+'</span>':'')+'</td>';
+  }
+
   rows.forEach(function(r){
     var nm=BV_NAMES[r.bv]||('BV '+r.bv);
     var dep=r.valide;
     var tr=document.createElement('tr');
-    if(!dep)tr.style.opacity='.45';
-    var pp=pct(r.votants,r.inscrits),pe=pct(r.exprimes,r.inscrits);
-    function cv(v,d,bold){
-      var vStr=v!==null?fn(v):'–';
-      var pStr=(v!==null&&d)?'<div class="pct-cell">'+fp(pct(v,d))+'</div>':'';
-      return '<td>'+(bold?'<b>'+vStr+'</b>':vStr)+pStr+'</td>';
-    }
-    tr.innerHTML='<td><b>'+r.bv+' – '+nm+'</b>'+(dep?'':' <span style="color:#bbb;font-size:.85em">en attente</span>')+'</td>'
+    if(!dep) tr.style.opacity='.4';
+    var pp=pct(r.votants,r.inscrits);
+    var ppStr=pp!==null?fp(pp,0):'–';
+    var ppColor=pp!==null&&pp>=50?'color:#2d7a3a':'';
+    tr.innerHTML=
+      '<td style="text-align:left"><b>'+r.bv+'.</b> '+nm+(dep?'':' <span style="color:#ccc">…</span>')+'</td>'
       +'<td>'+fn(r.inscrits)+'</td>'
       +'<td>'+fn(r.votants)+'</td>'
-      +'<td style="font-weight:700;color:'+(pp!==null&&pp>=50?'#2d7a3a':'var(--text)')+'">'+fp(pp,0)+'</td>'
+      +'<td style="font-weight:700;'+ppColor+'">'+ppStr+'</td>'
       +'<td>'+fn(r.exprimes)+'</td>'
-      +cv(r.iriart,r.exprimes,true)
-      +cv(r.etcheto,r.exprimes,true)
-      +cv(r.pereira,r.exprimes,true)
-      +cv(r.etchegaray,r.exprimes,true)
-      +cv(r.lesellier,r.exprimes,true)
+      +cv(r.iriart,r.exprimes)
+      +cv(r.etcheto,r.exprimes)
+      +cv(r.pereira,r.exprimes)
+      +cv(r.etchegaray,r.exprimes)
+      +cv(r.lesellier,r.exprimes)
       +'<td style="color:var(--text3)">'+fn(r.blancs)+'</td>'
       +'<td style="color:var(--text3)">'+fn(r.nuls)+'</td>';
     tbody.appendChild(tr);
   });
+
   // Ligne total
-  var ttr=document.createElement('tr'); ttr.className='total-row';
   var pp2=pct(g.votants,g.inscrits);
-  ttr.innerHTML='<td>TOTAL – '+g.nbDep+' / '+TOTAL_BV+' BV</td>'
+  var ttr=document.createElement('tr'); ttr.className='total-row';
+  ttr.innerHTML=
+    '<td style="text-align:left">TOTAL ('+g.nbDep+'/'+TOTAL_BV+' BV)</td>'
     +'<td>'+fn(g.inscrits)+'</td>'
     +'<td>'+fn(g.votants)+'</td>'
-    +'<td style="color:'+(pp2!==null&&pp2>=50?'#2d7a3a':'var(--text)')+'">'+fp(pp2,1)+'</td>'
+    +'<td style="'+(pp2!==null&&pp2>=50?'color:#2d7a3a':'')+'">'+fp(pp2,1)+'</td>'
     +'<td>'+fn(g.exprimes)+'</td>'
-    +'<td><b>'+fn(g.iriart)+'</b><div class="pct-cell">'+fp(pct(g.iriart,g.exprimes))+'</div></td>'
-    +'<td><b>'+fn(g.etcheto)+'</b><div class="pct-cell">'+fp(pct(g.etcheto,g.exprimes))+'</div></td>'
-    +'<td><b>'+fn(g.pereira)+'</b><div class="pct-cell">'+fp(pct(g.pereira,g.exprimes))+'</div></td>'
-    +'<td><b>'+fn(g.etchegaray)+'</b><div class="pct-cell">'+fp(pct(g.etchegaray,g.exprimes))+'</div></td>'
-    +'<td><b>'+fn(g.lesellier)+'</b><div class="pct-cell">'+fp(pct(g.lesellier,g.exprimes))+'</div></td>'
+    +'<td><b>'+fn(g.iriart)+'</b><span class="pv">'+fp(pct(g.iriart,g.exprimes))+'</span></td>'
+    +'<td><b>'+fn(g.etcheto)+'</b><span class="pv">'+fp(pct(g.etcheto,g.exprimes))+'</span></td>'
+    +'<td><b>'+fn(g.pereira)+'</b><span class="pv">'+fp(pct(g.pereira,g.exprimes))+'</span></td>'
+    +'<td><b>'+fn(g.etchegaray)+'</b><span class="pv">'+fp(pct(g.etchegaray,g.exprimes))+'</span></td>'
+    +'<td><b>'+fn(g.lesellier)+'</b><span class="pv">'+fp(pct(g.lesellier,g.exprimes))+'</span></td>'
     +'<td>'+fn(g.blancs)+'</td>'
     +'<td>'+fn(g.nuls)+'</td>';
   tbody.appendChild(ttr);
-  // Légende couleurs
+
+  // Légende : nom complet de chaque liste
   footer.innerHTML=LISTES.map(function(l){
     return '<span class="tbl-leg"><span class="tbl-leg-dot" style="background:'+l.hex+'"></span>'+l.long+'</span>';
   }).join('');
