@@ -9,7 +9,7 @@
 :root{
   --bg:#f0efeb;--surface:#fff;--border:#dddad2;
   --text:#1a1a2e;--text2:#555;--text3:#999;
-  --pereira:#c0392b;--iriart:#2d7a3a;--etcheto:#e8a9bf;
+  --pereira:#c0392b;--iriart:#2d7a3a;--etcheto:#a8305a;
   --etchegaray:#1a3a6e;--lesellier:#5a2d14;
   --part:#e6a817;--abst:#c0392b;--blanc:#7f8c8d;--nul:#95a5a6;
   --gauche:#2d7a3a;--centre:#1a3a6e;--rn:#5a2d14;
@@ -92,19 +92,32 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
 
 /* SLIDE 9 — TABLEAU tout visible, pas de scroll */
 #s9 .sbody{display:flex;flex-direction:column;flex:1;padding:clamp(4px,.7vh,10px) clamp(8px,1.4vw,22px) clamp(28px,4.5vh,46px);overflow:hidden;min-height:0;gap:clamp(3px,.4vh,6px)}
-.tbl-wrap{flex:1;overflow:hidden;min-height:0;border-radius:8px;border:1px solid var(--border);display:flex;flex-direction:column}
-table.dtbl{border-collapse:collapse;width:100%;table-layout:fixed}
-/* Hauteur des lignes calculée pour tenir 32 lignes (30 BV + thead + total) dans l'espace dispo */
-.dtbl thead tr{display:table-row}
-.dtbl thead th{background:var(--text);color:#fff;padding:clamp(3px,.45vh,6px) clamp(3px,.4vw,6px);font-weight:700;text-align:right;font-size:clamp(7px,.6vw,10px);letter-spacing:.2px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.2}
+.tbl-wrap{flex:1;overflow:hidden;min-height:0;border-radius:8px;border:1px solid var(--border)}
+table.dtbl{border-collapse:collapse;width:100%;table-layout:fixed;height:100%}
+.dtbl thead th{background:var(--text);color:#fff;padding:clamp(3px,.45vh,6px) clamp(2px,.35vw,5px);font-weight:700;text-align:right;font-size:clamp(7px,.6vw,9.5px);letter-spacing:.2px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.2}
 .dtbl thead th:first-child{text-align:left}
-.dtbl thead th.ch{border-bottom:2px solid}
-.dtbl tbody{display:table-row-group}
-.dtbl tbody tr:nth-child(even){background:#f8f7f4}
-.dtbl tbody td{padding:clamp(2px,.35vh,5px) clamp(3px,.4vw,6px);border-bottom:1px solid #eee;text-align:right;font-variant-numeric:tabular-nums;font-size:clamp(7px,.62vw,10px);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.25}
-.dtbl tbody td:first-child{text-align:left;font-weight:700}
-.dtbl tbody td.pv{font-size:clamp(6px,.52vw,8.5px);color:var(--text3);display:block;line-height:1}
-.dtbl tbody tr.total-row td{font-weight:900;background:#e8e6e0;border-top:2px solid var(--text);font-size:clamp(8px,.68vw,11px)}
+.dtbl thead th.ch{border-bottom:3px solid}
+.dtbl tbody tr:nth-child(odd){background:#fff}
+.dtbl tbody tr:nth-child(even){background:#f6f5f2}
+.dtbl tbody td{
+  padding:0 clamp(2px,.35vw,5px);
+  border-bottom:1px solid #e8e6e0;
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+  overflow:hidden;
+  white-space:normal;
+  line-height:1;
+  vertical-align:middle;
+}
+.dtbl tbody td:first-child{text-align:left;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Deux lignes dans chaque cellule candidat */
+.cv-voix{display:block;font-size:clamp(7px,.65vw,10.5px);font-weight:700;line-height:1.3}
+.cv-pct{display:block;font-size:clamp(6px,.52vw,8px);color:var(--text3);line-height:1.1}
+/* Cellules simples (inscrits, votants…) */
+.dtbl tbody td.mono{font-size:clamp(7px,.62vw,10px)}
+.dtbl tbody tr.total-row td{font-weight:900;background:#dddad2 !important;border-top:2px solid var(--text)}
+.dtbl tbody tr.total-row .cv-voix{font-size:clamp(8px,.7vw,11px)}
+.dtbl tbody tr.total-row .cv-pct{font-size:clamp(6.5px,.56vw,9px);color:var(--text2)}
 .tbl-footer{flex-shrink:0;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(6px,.8vw,12px);font-size:clamp(7px,.62vw,10px);color:var(--text3)}
 .tbl-leg{display:flex;align-items:center;gap:3px}
 .tbl-leg-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
@@ -297,14 +310,14 @@ table.dtbl{border-collapse:collapse;width:100%;table-layout:fixed}
         <g id="mps5"></g><g id="mls5"></g>
       </svg>
       <div class="map-overlay-title">
-        <span class="mot-name" style="color:#e8a9bf">Etcheto</span>
+        <span class="mot-name" style="color:#a8305a">Etcheto</span>
       </div>
       <div class="mtt" id="mtts5"></div>
     </div>
     <div class="map-stats">
     <div class="mstat">
       <div class="mstat-lbl">Score global</div>
-      <div class="mstat-val" id="s5pct" style="color:#e8a9bf">–</div>
+      <div class="mstat-val" id="s5pct" style="color:#a8305a">–</div>
       <div class="mstat-sub" id="s5pct-sub"></div>
     </div>
     <div class="mstat">
@@ -314,7 +327,7 @@ table.dtbl{border-collapse:collapse;width:100%;table-layout:fixed}
     </div>
     <div class="mstat">
       <div class="mstat-lbl">Meilleur bureau</div>
-      <div class="mstat-val" id="s5bv1" style="color:#e8a9bf">–</div>
+      <div class="mstat-val" id="s5bv1" style="color:#a8305a">–</div>
       <div class="mstat-sub" id="s5bv1-sub"></div>
     </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:3px">
@@ -492,14 +505,14 @@ const BV_NAMES={"1": "Mairie", "2": "Cathédrale", "3": "Lauga", "4": "Petit Bay
 const LISTES=[
   {key:'pereira',    nom:'Pereira (LFI)', long:'Pereira (LFI)',        hex:'#c0392b'},
   {key:'iriart',     nom:'Iriart (BM)',   long:'Bayonne en Mouvement', hex:'#2d7a3a'},
-  {key:'etcheto',    nom:'Etcheto',       long:'Etcheto',              hex:'#e8a9bf'},
+  {key:'etcheto',    nom:'Etcheto',       long:'Etcheto',              hex:'#a8305a'},
   {key:'etchegaray', nom:'Etchegaray',    long:'Etchegaray',           hex:'#1a3a6e'},
   {key:'lesellier',  nom:'Lesellier (RN)',long:'Lesellier (RN)',       hex:'#5a2d14'},
 ];
 const CANDS=[
   {sid:'s3',key:'pereira',    hex:'#c0392b'},
   {sid:'s4',key:'iriart',     hex:'#2d7a3a'},
-  {sid:'s5',key:'etcheto',    hex:'#e8a9bf'},
+  {sid:'s5',key:'etcheto',    hex:'#a8305a'},
   {sid:'s6',key:'etchegaray', hex:'#1a3a6e'},
   {sid:'s7',key:'lesellier',  hex:'#5a2d14'},
 ];
@@ -507,7 +520,7 @@ const CANDS=[
 // segs[0]=bas, segs[dernière]=haut dans l'empilement
 const BLOCS=[
   {id:'gauche',name:'Gauche',color:'#2d7a3a',sub:'BM + Etcheto + LFI',
-   segs:[{key:'iriart',hex:'#2d7a3a',label:'BM'},{key:'etcheto',hex:'#e8a9bf',label:'Etcheto'},{key:'pereira',hex:'#c0392b',label:'LFI'}]},
+   segs:[{key:'iriart',hex:'#2d7a3a',label:'BM'},{key:'etcheto',hex:'#a8305a',label:'Etcheto'},{key:'pereira',hex:'#c0392b',label:'LFI'}]},
   {id:'centre',name:'Centre et Droite',color:'#1a3a6e',sub:'Etchegaray',
    segs:[{key:'etchegaray',hex:'#1a3a6e',label:''}]},
   {id:'rn',name:'RN',color:'#5a2d14',sub:'Lesellier',
@@ -862,91 +875,92 @@ function drawSlide9(){
   var tbody=document.getElementById('dtbl-body');
   var footer=document.getElementById('tbl-footer');
 
-  // Largeurs en % : BV=20%, Inscrits=7%, Votants=7%, Part=6%, Exprimés=7%, 5 listes=7% chacune, Blancs=5%, Nuls=5%
-  // Total = 20+7+7+6+7+35+5+5 = 92% → OK (un peu de marge)
   var cols=[
-    {w:'19%',lbl:'Bureau de vote',align:'left'},
-    {w:'7%', lbl:'Inscrits',align:'right'},
-    {w:'7%', lbl:'Votants',align:'right'},
-    {w:'6%', lbl:'Part.',align:'right'},
-    {w:'7%', lbl:'Exprimés',align:'right'},
-    {w:'7%', lbl:'Iriart',align:'right',color:'#2d7a3a'},
-    {w:'7%', lbl:'Etcheto',align:'right',color:'#c0436e'},
-    {w:'7%', lbl:'Pereira',align:'right',color:'#c0392b'},
-    {w:'8%', lbl:'Etchegaray',align:'right',color:'#1a3a6e'},
-    {w:'7%', lbl:'Lesellier',align:'right',color:'#5a2d14'},
-    {w:'5%', lbl:'Blancs',align:'right'},
-    {w:'5%', lbl:'Nuls',align:'right'},
+    {w:'18%',lbl:'Bureau de vote',  align:'left'},
+    {w:'7%', lbl:'Inscrits',        align:'right'},
+    {w:'7%', lbl:'Votants',         align:'right'},
+    {w:'5%', lbl:'Part.',           align:'right'},
+    {w:'7%', lbl:'Exprimés',        align:'right'},
+    {w:'7%', lbl:'Iriart',          align:'right',color:'#2d7a3a'},
+    {w:'7%', lbl:'Etcheto',         align:'right',color:'#a8305a'},
+    {w:'7%', lbl:'Pereira',         align:'right',color:'#c0392b'},
+    {w:'8%', lbl:'Etchegaray',      align:'right',color:'#1a3a6e'},
+    {w:'7%', lbl:'Lesellier',       align:'right',color:'#5a2d14'},
+    {w:'5%', lbl:'Blancs',          align:'right'},
+    {w:'5%', lbl:'Nuls',            align:'right'},
   ];
-  // colgroup pour largeurs fixes
+
   var tbl=document.getElementById('dtbl');
-  var cg=tbl.querySelector('colgroup')||document.createElement('colgroup');
+  var cg=tbl.querySelector('colgroup');
+  if(!cg){cg=document.createElement('colgroup');tbl.insertBefore(cg,tbl.firstChild);}
   cg.innerHTML=cols.map(function(c){return '<col style="width:'+c.w+'">';}).join('');
-  if(!tbl.querySelector('colgroup'))tbl.insertBefore(cg,tbl.firstChild);
 
-  var hrow='<tr>';
-  cols.forEach(function(c){
+  thead.innerHTML='<tr>'+cols.map(function(c){
     var st='text-align:'+c.align+';';
-    if(c.color) st+='border-bottom:2px solid '+c.color+';';
-    hrow+='<th style="'+st+'">'+c.lbl+'</th>';
-  });
-  hrow+='</tr>';
-  thead.innerHTML=hrow;
+    if(c.color) st+='border-bottom:3px solid '+c.color+';';
+    return '<th style="'+st+'">'+c.lbl+'</th>';
+  }).join('')+'</tr>';
 
-  // Lignes BV
   var rows=data.slice().sort(function(a,b){return a.bv-b.bv;});
   tbody.innerHTML='';
 
-  // Fonction cellule voix + % en dessous
+  // Cellule candidat : voix en gras, puis (xx %) en dessous sur une ligne séparée
   function cv(v,d){
-    if(v===null) return '<td>–</td>';
+    if(v===null||v===undefined) return '<td><span class="cv-voix" style="color:#ccc">–</span></td>';
     var p=pct(v,d);
-    return '<td><b>'+fn(v)+'</b>'+(p!==null?'<span class="pv">'+fp(p,0)+'</span>':'')+'</td>';
+    return '<td>'
+      +'<span class="cv-voix">'+fn(v)+'</span>'
+      +(p!==null?'<span class="cv-pct">('+fp(p,0)+')</span>':'')
+      +'</td>';
   }
 
   rows.forEach(function(r){
     var nm=BV_NAMES[r.bv]||('BV '+r.bv);
     var dep=r.valide;
     var tr=document.createElement('tr');
-    if(!dep) tr.style.opacity='.4';
+    if(!dep) tr.style.opacity='.38';
     var pp=pct(r.votants,r.inscrits);
-    var ppStr=pp!==null?fp(pp,0):'–';
-    var ppColor=pp!==null&&pp>=50?'color:#2d7a3a':'';
     tr.innerHTML=
-      '<td style="text-align:left"><b>'+r.bv+'.</b> '+nm+(dep?'':' <span style="color:#ccc">…</span>')+'</td>'
-      +'<td>'+fn(r.inscrits)+'</td>'
-      +'<td>'+fn(r.votants)+'</td>'
-      +'<td style="font-weight:700;'+ppColor+'">'+ppStr+'</td>'
-      +'<td>'+fn(r.exprimes)+'</td>'
+      '<td><b>'+r.bv+'.</b> '+nm+(dep?'':' <span style="color:#ccc;font-size:.85em">…</span>')+'</td>'
+      +'<td class="mono">'+fn(r.inscrits)+'</td>'
+      +'<td class="mono">'+fn(r.votants)+'</td>'
+      +'<td class="mono" style="font-weight:700;'+(pp!==null&&pp>=50?'color:#2d7a3a':'')+'">'+fp(pp,0)+'</td>'
+      +'<td class="mono">'+fn(r.exprimes)+'</td>'
       +cv(r.iriart,r.exprimes)
       +cv(r.etcheto,r.exprimes)
       +cv(r.pereira,r.exprimes)
       +cv(r.etchegaray,r.exprimes)
       +cv(r.lesellier,r.exprimes)
-      +'<td style="color:var(--text3)">'+fn(r.blancs)+'</td>'
-      +'<td style="color:var(--text3)">'+fn(r.nuls)+'</td>';
+      +'<td class="mono" style="color:var(--text3)">'+fn(r.blancs)+'</td>'
+      +'<td class="mono" style="color:var(--text3)">'+fn(r.nuls)+'</td>';
     tbody.appendChild(tr);
   });
 
-  // Ligne total
+  // Ligne total — même structure deux lignes
   var pp2=pct(g.votants,g.inscrits);
+  function cvt(v,d){
+    var p=pct(v,d);
+    return '<td>'
+      +'<span class="cv-voix">'+fn(v)+'</span>'
+      +(p!==null?'<span class="cv-pct">('+fp(p,0)+')</span>':'')
+      +'</td>';
+  }
   var ttr=document.createElement('tr'); ttr.className='total-row';
   ttr.innerHTML=
-    '<td style="text-align:left">TOTAL ('+g.nbDep+'/'+TOTAL_BV+' BV)</td>'
-    +'<td>'+fn(g.inscrits)+'</td>'
-    +'<td>'+fn(g.votants)+'</td>'
-    +'<td style="'+(pp2!==null&&pp2>=50?'color:#2d7a3a':'')+'">'+fp(pp2,1)+'</td>'
-    +'<td>'+fn(g.exprimes)+'</td>'
-    +'<td><b>'+fn(g.iriart)+'</b><span class="pv">'+fp(pct(g.iriart,g.exprimes))+'</span></td>'
-    +'<td><b>'+fn(g.etcheto)+'</b><span class="pv">'+fp(pct(g.etcheto,g.exprimes))+'</span></td>'
-    +'<td><b>'+fn(g.pereira)+'</b><span class="pv">'+fp(pct(g.pereira,g.exprimes))+'</span></td>'
-    +'<td><b>'+fn(g.etchegaray)+'</b><span class="pv">'+fp(pct(g.etchegaray,g.exprimes))+'</span></td>'
-    +'<td><b>'+fn(g.lesellier)+'</b><span class="pv">'+fp(pct(g.lesellier,g.exprimes))+'</span></td>'
-    +'<td>'+fn(g.blancs)+'</td>'
-    +'<td>'+fn(g.nuls)+'</td>';
+    '<td>TOTAL '+g.nbDep+'/'+TOTAL_BV+' BV</td>'
+    +'<td class="mono">'+fn(g.inscrits)+'</td>'
+    +'<td class="mono">'+fn(g.votants)+'</td>'
+    +'<td class="mono" style="'+(pp2!==null&&pp2>=50?'color:#2d7a3a':'')+'">'+fp(pp2,1)+'</td>'
+    +'<td class="mono">'+fn(g.exprimes)+'</td>'
+    +cvt(g.iriart,g.exprimes)
+    +cvt(g.etcheto,g.exprimes)
+    +cvt(g.pereira,g.exprimes)
+    +cvt(g.etchegaray,g.exprimes)
+    +cvt(g.lesellier,g.exprimes)
+    +'<td class="mono">'+fn(g.blancs)+'</td>'
+    +'<td class="mono">'+fn(g.nuls)+'</td>';
   tbody.appendChild(ttr);
 
-  // Légende : nom complet de chaque liste
   footer.innerHTML=LISTES.map(function(l){
     return '<span class="tbl-leg"><span class="tbl-leg-dot" style="background:'+l.hex+'"></span>'+l.long+'</span>';
   }).join('');
