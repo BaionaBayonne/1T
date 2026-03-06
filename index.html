@@ -39,9 +39,10 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
 .chart{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0}
 .brow{display:flex;align-items:center;flex:0 0 auto}
 .blbl{width:clamp(160px,22vw,340px);flex-shrink:0;padding-right:clamp(8px,1.2vw,20px);text-align:right}
-/* Page 1 : nom de la liste seulement + nb voix plus visible */
+/* Page 1 : nom court candidat + nom liste + nb voix */
 .blbl .ln{font-size:clamp(15px,1.7vw,27px);font-weight:800;display:block;line-height:1.2}
-.blbl .vx{font-size:clamp(12px,1.2vw,19px);color:var(--text2);display:block;line-height:1.2;font-weight:600}
+.blbl .cn{font-size:clamp(9px,.82vw,13px);color:var(--text2);display:block;line-height:1.2;font-weight:600}
+.blbl .vx{font-size:clamp(12px,1.2vw,19px);color:var(--text);display:block;line-height:1.2;font-weight:700}
 .btrk{flex:1;position:relative;height:clamp(32px,5.8vh,65px);display:flex;align-items:center}
 .bline{position:absolute;left:0;top:0;width:2px;height:100%;background:#ccc;z-index:2}
 .bfill{height:78%;border-radius:0 6px 6px 0;transition:width .9s cubic-bezier(.4,0,.2,1);min-width:3px;display:flex;align-items:center;padding-left:.8vw;position:relative;z-index:1}
@@ -892,10 +893,10 @@ function drawSlide9(){
     {w:'7%', lbl:'Votants',         align:'right'},
     {w:'5%', lbl:'Part.',           align:'right'},
     {w:'7%', lbl:'Exprimés',        align:'right'},
-    {w:'7%', lbl:'Iriart',          align:'right',color:'#2d7a3a'},
     {w:'7%', lbl:'Etcheto',         align:'right',color:'#a8305a'},
-    {w:'7%', lbl:'Pereira',         align:'right',color:'#c0392b'},
     {w:'8%', lbl:'Etchegaray',      align:'right',color:'#1a3a6e'},
+    {w:'7%', lbl:'Iriart',          align:'right',color:'#2d7a3a'},
+    {w:'7%', lbl:'Pereira',         align:'right',color:'#c0392b'},
     {w:'7%', lbl:'Lesellier',       align:'right',color:'#5a2d14'},
     {w:'5%', lbl:'Blancs',          align:'right'},
     {w:'5%', lbl:'Nuls',            align:'right'},
@@ -937,10 +938,10 @@ function drawSlide9(){
       +'<td class="mono">'+fn(r.votants)+'</td>'
       +'<td class="mono" style="font-weight:700;'+(pp!==null&&pp>=50?'color:#2d7a3a':'')+'">'+fp(pp,0)+'</td>'
       +'<td class="mono">'+fn(r.exprimes)+'</td>'
-      +cv(r.iriart,r.exprimes)
       +cv(r.etcheto,r.exprimes)
-      +cv(r.pereira,r.exprimes)
       +cv(r.etchegaray,r.exprimes)
+      +cv(r.iriart,r.exprimes)
+      +cv(r.pereira,r.exprimes)
       +cv(r.lesellier,r.exprimes)
       +'<td class="mono" style="color:var(--text3)">'+fn(r.blancs)+'</td>'
       +'<td class="mono" style="color:var(--text3)">'+fn(r.nuls)+'</td>';
@@ -963,10 +964,10 @@ function drawSlide9(){
     +'<td class="mono">'+fn(g.votants)+'</td>'
     +'<td class="mono" style="'+(pp2!==null&&pp2>=50?'color:#2d7a3a':'')+'">'+fp(pp2,1)+'</td>'
     +'<td class="mono">'+fn(g.exprimes)+'</td>'
-    +cvt(g.iriart,g.exprimes)
     +cvt(g.etcheto,g.exprimes)
-    +cvt(g.pereira,g.exprimes)
     +cvt(g.etchegaray,g.exprimes)
+    +cvt(g.iriart,g.exprimes)
+    +cvt(g.pereira,g.exprimes)
     +cvt(g.lesellier,g.exprimes)
     +'<td class="mono">'+fn(g.blancs)+'</td>'
     +'<td class="mono">'+fn(g.nuls)+'</td>';
