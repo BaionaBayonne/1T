@@ -91,6 +91,17 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
 .blocs-svg-wrap{flex:1;min-height:0;position:relative}
 .blocs-svg-wrap svg{width:100%;height:100%;display:block;overflow:visible}
 
+
+/* SLIDE 10 — COMPARAISON 2020/2026 */
+#s10 .sbody{display:flex;flex-direction:column;flex:1;padding:clamp(8px,1.4vh,20px) clamp(20px,4vw,70px) clamp(32px,5.5vh,56px);gap:clamp(4px,.7vh,10px);overflow:hidden;min-height:0}
+.chart10{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0}
+/* Groupe candidat : titre + 2 barres */
+.cmp-group{display:flex;flex-direction:column;gap:clamp(2px,.3vh,5px);flex:1}
+.cmp-year{font-size:clamp(8px,.68vw,11px);font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);width:clamp(160px,22vw,340px);text-align:right;padding-right:clamp(8px,1.2vw,20px);flex-shrink:0}
+.cmp-year.y26{color:var(--text2)}
+.brow-2020 .bfill{opacity:.55}
+.cmp-sep{height:1px;background:var(--border);margin:clamp(2px,.3vh,5px) 0;flex-shrink:0}
+
 /* SLIDE 9 — TABLEAU tout visible, pas de scroll */
 #s9 .sbody{display:flex;flex-direction:column;flex:1;padding:clamp(4px,.7vh,10px) clamp(8px,1.4vw,22px) clamp(28px,4.5vh,46px);overflow:hidden;min-height:0;gap:clamp(3px,.4vh,6px)}
 .tbl-wrap{flex:1;overflow:hidden;min-height:0;border-radius:8px;border:1px solid var(--border)}
@@ -474,6 +485,22 @@ table.dtbl{border-collapse:collapse;width:100%;table-layout:fixed;height:100%}
     <div class="tbl-footer" id="tbl-footer"></div>
   </div>
 </div>
+<div id="s10" class="slide">
+  <div class="header">
+    <div class="htitle"><h1>Comparaison 2020 / 2026</h1><p>1er tour · Périmètre BV dépouillés 2026</p></div>
+    <div class="hright">
+      <button class="rbtn" id="rbtns10"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Actualiser</button>
+      <div class="badge">
+        <span class="badge-line1">Résultats obtenus pour</span>
+        <span class="badge-line2" id="s10bv">0 / 30</span>
+        <span class="badge-line3">bureaux de vote</span>
+      </div>
+    </div>
+  </div>
+  <div class="sbody" id="s10body">
+    <div class="chart" id="chart10"></div>
+  </div>
+</div>
 <div class="ctrl">
   <button class="cbtn" id="bprev" title="Précédent (←)">&#9664;</button>
   <div class="dwrap">
@@ -486,6 +513,7 @@ table.dtbl{border-collapse:collapse;width:100%;table-layout:fixed;height:100%}
     <div class="cdot" id="d7" onclick="goSlide(7)"></div>
     <div class="cdot" id="d8" onclick="goSlide(8)"></div>
     <div class="cdot" id="d9" onclick="goSlide(9)"></div>
+    <div class="cdot" id="d10" onclick="goSlide(10)"></div>
   </div>
   <span class="slide-lbl" id="slide-lbl">Résultats globaux</span>
   <button class="cbtn" id="bpause" title="Pause (Espace)">&#9646;&#9646;</button>
@@ -498,8 +526,9 @@ const GEOJSON={"type":"FeatureCollection","features":[{"type":"Feature","propert
 <script>
 const SHEET_ID='1nxp3CwXHkbcdmAz5PBgHGhZ2rtfXRwhl0ci1971VwX8';
 const SHEET_NAME='1erTour';
-const REFRESH_S=60, SLIDE_MS=12000, TOTAL_BV=30, N_SLIDES=9;
-const SEUIL_2ND=0.10, SEUIL_FUSION=0.05;  // 10% exprimés = 2nd tour, 5% exprimés = fusion autorisée
+const REFRESH_S=60, SLIDE_MS=12000, TOTAL_BV=30, N_SLIDES=10;
+const SEUIL_2ND=0.10, SEUIL_FUSION=0.05;
+const DATA_2020=[{"bv": 1, "exprimes": 419, "iriart": 65, "berge": 45, "etcheto": 91, "etchegaray": 199, "lesellier": 19}, {"bv": 2, "exprimes": 408, "iriart": 78, "berge": 58, "etcheto": 116, "etchegaray": 139, "lesellier": 17}, {"bv": 3, "exprimes": 331, "iriart": 65, "berge": 58, "etcheto": 91, "etchegaray": 103, "lesellier": 14}, {"bv": 4, "exprimes": 367, "iriart": 68, "berge": 62, "etcheto": 92, "etchegaray": 136, "lesellier": 9}, {"bv": 5, "exprimes": 475, "iriart": 88, "berge": 77, "etcheto": 108, "etchegaray": 182, "lesellier": 20}, {"bv": 6, "exprimes": 584, "iriart": 85, "berge": 93, "etcheto": 157, "etchegaray": 211, "lesellier": 38}, {"bv": 7, "exprimes": 474, "iriart": 92, "berge": 79, "etcheto": 131, "etchegaray": 147, "lesellier": 25}, {"bv": 8, "exprimes": 408, "iriart": 55, "berge": 58, "etcheto": 108, "etchegaray": 162, "lesellier": 25}, {"bv": 9, "exprimes": 431, "iriart": 59, "berge": 47, "etcheto": 139, "etchegaray": 154, "lesellier": 32}, {"bv": 10, "exprimes": 417, "iriart": 53, "berge": 63, "etcheto": 96, "etchegaray": 173, "lesellier": 32}, {"bv": 11, "exprimes": 408, "iriart": 54, "berge": 51, "etcheto": 100, "etchegaray": 166, "lesellier": 37}, {"bv": 12, "exprimes": 361, "iriart": 45, "berge": 37, "etcheto": 106, "etchegaray": 157, "lesellier": 16}, {"bv": 13, "exprimes": 234, "iriart": 27, "berge": 25, "etcheto": 91, "etchegaray": 81, "lesellier": 10}, {"bv": 14, "exprimes": 387, "iriart": 54, "berge": 49, "etcheto": 87, "etchegaray": 175, "lesellier": 22}, {"bv": 15, "exprimes": 411, "iriart": 53, "berge": 22, "etcheto": 133, "etchegaray": 181, "lesellier": 22}, {"bv": 16, "exprimes": 392, "iriart": 78, "berge": 50, "etcheto": 129, "etchegaray": 123, "lesellier": 12}, {"bv": 17, "exprimes": 304, "iriart": 29, "berge": 36, "etcheto": 103, "etchegaray": 121, "lesellier": 15}, {"bv": 18, "exprimes": 570, "iriart": 57, "berge": 58, "etcheto": 109, "etchegaray": 307, "lesellier": 39}, {"bv": 19, "exprimes": 462, "iriart": 37, "berge": 38, "etcheto": 82, "etchegaray": 268, "lesellier": 37}, {"bv": 20, "exprimes": 459, "iriart": 45, "berge": 46, "etcheto": 87, "etchegaray": 252, "lesellier": 29}, {"bv": 21, "exprimes": 397, "iriart": 47, "berge": 30, "etcheto": 119, "etchegaray": 164, "lesellier": 37}, {"bv": 22, "exprimes": 260, "iriart": 34, "berge": 30, "etcheto": 87, "etchegaray": 89, "lesellier": 20}, {"bv": 23, "exprimes": 402, "iriart": 46, "berge": 42, "etcheto": 142, "etchegaray": 147, "lesellier": 25}, {"bv": 24, "exprimes": 422, "iriart": 44, "berge": 26, "etcheto": 174, "etchegaray": 157, "lesellier": 21}, {"bv": 25, "exprimes": 479, "iriart": 42, "berge": 50, "etcheto": 200, "etchegaray": 169, "lesellier": 18}, {"bv": 26, "exprimes": 435, "iriart": 38, "berge": 31, "etcheto": 176, "etchegaray": 176, "lesellier": 14}, {"bv": 27, "exprimes": 340, "iriart": 25, "berge": 24, "etcheto": 167, "etchegaray": 107, "lesellier": 17}, {"bv": 28, "exprimes": 282, "iriart": 15, "berge": 14, "etcheto": 141, "etchegaray": 100, "lesellier": 12}, {"bv": 29, "exprimes": 457, "iriart": 75, "berge": 40, "etcheto": 154, "etchegaray": 167, "lesellier": 21}, {"bv": 30, "exprimes": 396, "iriart": 44, "berge": 25, "etcheto": 107, "etchegaray": 196, "lesellier": 24}];  // 10% exprimés = 2nd tour, 5% exprimés = fusion autorisée
 const BV_NAMES={"1": "Mairie", "2": "Cathédrale", "3": "Lauga", "4": "Petit Bayonne", "5": "Gare", "6": "Als. Lorraine", "7": "St-Esprit Jaurès", "8": "St Léon", "9": "Lahubiague", "10": "Marracq Panorama", "11": "Marracq Biraben", "12": "Polo Beyris Sud", "13": "Polo Beyris Nord", "14": "Saint Amand", "15": "Prissé", "16": "Mousserolles", "17": "Balichon Ouest", "18": "Balichon Est", "19": "Arènes Tribunal", "20": "Arènes Ouest", "21": "St Bernard", "22": "Citadelle", "23": "Coumères", "24": "Caradoc", "25": "Habas", "26": "Ste Croix / Stade DD", "27": "Pl. des Gascons", "28": "Ste Croix Breuer Est", "29": "Séqué", "30": "Arrousets"};
 
 // Couleurs : LFI=rouge, Etchegaray=bleu, Etcheto=rose clair (contraste avec LFI rouge)
@@ -537,8 +566,8 @@ const BLOCS=[
    color:'#5a2d14',
    segs:[{key:'lesellier',hex:'#5a2d14',label:''}]},
 ];
-const SLIDE_LABELS=['Résultats globaux','Participation','Etcheto','Etchegaray','Iriart (BM)','Pereira','Lesellier','Synthèse','Tableau détaillé'];
-const ALL_SIDS=['s1','s2','s3','s4','s5','s6','s7','s8','s9'];
+const SLIDE_LABELS=['Résultats globaux','Participation','Etcheto','Etchegaray','Iriart (BM)','Pereira','Lesellier','Synthèse','Tableau détaillé','Comparaison 2020'];
+const ALL_SIDS=['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10'];
 
 var data=[],curSlide=1,paused=false,sTimer=null,cdTimer=null,cdVal=REFRESH_S;
 
@@ -978,12 +1007,129 @@ function drawSlide9(){
   }).join('');
 }
 
+// ── SLIDE 10 — COMPARAISON 2020 / 2026 ──
+function drawSlide10(){
+  setBadge('s10',globals().nbDep);
+  var g=globals();
+  var depBVs=data.filter(function(r){return r.valide;}).map(function(r){return r.bv;});
+
+  // Calculer les scores 2020 sur les BV déjà dépouillés en 2026
+  var d20=DATA_2020.filter(function(r){return depBVs.indexOf(r.bv)>=0;});
+  var s20=function(k){return d20.reduce(function(a,r){return a+(r[k]||0);},0);};
+  var exp20=s20('exprimes');
+  var bm20=s20('iriart')+s20('berge');  // Iriart+Bergé 2020
+
+  // Définition des comparaisons
+  var COMPS=[
+    {
+      hex:'#a8305a',
+      short:'H. Etcheto',
+      long:'Bayonne Tout Simplement',
+      v26:g.etcheto, exp26:g.exprimes,
+      v20:s20('etcheto'), exp20:exp20,
+      lbl20:'Etcheto 2020'
+    },
+    {
+      hex:'#1a3a6e',
+      short:'JR. Etchegaray',
+      long:"Bayonne l'essentiel c'est vous",
+      v26:g.etchegaray, exp26:g.exprimes,
+      v20:s20('etchegaray'), exp20:exp20,
+      lbl20:'Etchegaray 2020'
+    },
+    {
+      hex:'#2d7a3a',
+      short:'JC. Iriart',
+      long:'Bayonne en Mouvement',
+      v26:g.iriart, exp26:g.exprimes,
+      v20:bm20, exp20:exp20,
+      lbl20:'Iriart + Bergé 2020'
+    },
+    {
+      hex:'#c0392b',
+      short:'S. Pereira-Ostanel',
+      long:'Bayonne insoumise et populaire',
+      v26:g.pereira, exp26:g.exprimes,
+      v20:null, exp20:exp20,
+      lbl20:'Pas de liste en 2020'
+    },
+    {
+      hex:'#5a2d14',
+      short:'P. Lesellier',
+      long:"Unis pour Bayonne l'Alternative",
+      v26:g.lesellier, exp26:g.exprimes,
+      v20:s20('lesellier'), exp20:exp20,
+      lbl20:'Lesellier 2020'
+    },
+  ];
+
+  var c=document.getElementById('chart10'); c.innerHTML='';
+
+  // Calculer le max global pour l'échelle des barres
+  var allPcts=[];
+  COMPS.forEach(function(cp){
+    if(cp.v26!==null&&cp.exp26) allPcts.push(pct(cp.v26,cp.exp26)||0);
+    if(cp.v20!==null&&cp.exp20) allPcts.push(pct(cp.v20,cp.exp20)||0);
+  });
+  var mx=Math.max.apply(null,allPcts.concat([5]));
+
+  COMPS.forEach(function(cp,ci){
+    // Séparateur entre groupes (sauf avant le premier)
+    if(ci>0){var sep=document.createElement('div');sep.className='cmp-sep';c.appendChild(sep);}
+
+    var grp=document.createElement('div'); grp.className='cmp-group';
+
+    // Barre 2026
+    var p26=pct(cp.v26,cp.exp26);
+    var bw26=(p26!==null&&mx>0)?Math.max(p26/mx*86,p26>0?0.5:0):0;
+    var wide26=bw26>14;
+    var row26=document.createElement('div'); row26.className='brow';
+    var inner26='<div class="blbl"><span class="ln" style="color:'+cp.hex+'">'+cp.short+'</span>';
+    inner26+='<span class="cn">'+cp.long+'</span>';
+    inner26+='<span class="vx">'+(cp.v26>0?fn(cp.v26)+' voix':'')+'</span>';
+    inner26+='<span class="cmp-year y26">2026</span></div>';
+    inner26+='<div class="btrk"><div class="bline"></div>';
+    inner26+='<div class="bfill" style="background:'+cp.hex+';width:'+bw26+'%">';
+    if(wide26&&p26!==null) inner26+='<span class="bpct">'+fp(p26)+'</span>';
+    inner26+='</div>';
+    if(!wide26&&p26!==null) inner26+='<span class="bpct-o" style="color:'+cp.hex+'">'+fp(p26)+'</span>';
+    if(p26===null) inner26+='<span class="bpct-o" style="color:#ccc">–</span>';
+    inner26+='</div>';
+    row26.innerHTML=inner26; grp.appendChild(row26);
+
+    // Barre 2020
+    var p20=cp.v20!==null?pct(cp.v20,cp.exp20):null;
+    var bw20=(p20!==null&&mx>0)?Math.max(p20/mx*86,p20>0?0.5:0):0;
+    var wide20=bw20>14;
+    var hexLight20=hexLight(cp.hex);
+    var row20=document.createElement('div'); row20.className='brow brow-2020';
+    var inner20='<div class="blbl">';
+    inner20+='<span class="cmp-year">'+cp.lbl20+'</span>';
+    inner20+='<span class="vx" style="color:var(--text3)">'+(cp.v20!==null&&cp.v20>0?fn(cp.v20)+' voix':'')+'</span>';
+    inner20+='</div>';
+    inner20+='<div class="btrk"><div class="bline"></div>';
+    if(p20!==null){
+      inner20+='<div class="bfill" style="background:'+cp.hex+';width:'+bw20+'%">';
+      if(wide20) inner20+='<span class="bpct">'+fp(p20)+'</span>';
+      inner20+='</div>';
+      if(!wide20) inner20+='<span class="bpct-o" style="color:'+cp.hex+'">'+fp(p20)+'</span>';
+    } else {
+      inner20+='<span class="bpct-o" style="color:#ccc;font-style:italic;font-size:clamp(9px,.8vw,13px)">Pas de liste en 2020</span>';
+    }
+    inner20+='</div>';
+    row20.innerHTML=inner20; grp.appendChild(row20);
+
+    c.appendChild(grp);
+  });
+}
+
 function refresh(){
   var g=globals();
   drawSlide1(g);drawSlide2(g);
   CANDS.forEach(function(c){drawCandSlide(g,c);});
   drawSlide8(g);
   drawSlide9();
+  drawSlide10();
 }
 function goSlide(n){
   document.getElementById('s'+curSlide).classList.remove('active');
@@ -994,6 +1140,7 @@ function goSlide(n){
   document.getElementById('slide-lbl').textContent=SLIDE_LABELS[n-1];
   if(n===8){var g=globals();drawSlide8(g);}
   if(n===9){drawSlide9();}
+  if(n===10){drawSlide10();}
 }
 function nextSlide(){goSlide(curSlide===N_SLIDES?1:curSlide+1);}
 function prevSlide(){goSlide(curSlide===1?N_SLIDES:curSlide-1);}
