@@ -107,18 +107,21 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
 .brow-2020{margin-top:clamp(1px,.1vh,2px)}
 .brow-2020 .bfill{opacity:.55}
 .brow-2020 .btrk{height:clamp(13px,2.2vh,26px)}
+.cmp-lbl20{font-size:clamp(7px,.58vw,10px);font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--text3);display:block;line-height:1.3}
 .cmp-sep{height:1px;background:var(--border);margin:clamp(1px,.2vh,3px) 0;flex-shrink:0}
 #s10 .blbl .vx{font-size:clamp(9px,.8vw,13px);display:block;line-height:1.2}
 /* Cartes stat page 10 : 2026 | 2020 côte à côte */
-.s10cards{margin-top:clamp(3px,.4vh,5px);height:clamp(55px,8.5vh,82px)}
-.s10cards .sc{flex-direction:column;justify-content:flex-start;padding-top:clamp(4px,.6vh,8px)}
-.s10cards .slbl{margin-bottom:clamp(2px,.3vh,4px)}
-.sc2-row{display:flex;align-items:center;flex:1;gap:0;min-height:0}
-.sc2-col{display:flex;flex-direction:column;justify-content:center;flex:1;min-width:0}
-.sc2-old .sval{font-size:clamp(14px,1.8vw,28px);color:var(--text3)}
-.sc2-old{opacity:.75}
-.sc2-yr{font-size:clamp(7px,.55vw,9px);font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);line-height:1;margin-bottom:1px}
-.sc2-div{width:1px;background:var(--border);margin:0 clamp(4px,.5vw,8px);align-self:stretch;flex-shrink:0}
+.s10cards{margin-top:clamp(3px,.4vh,5px);height:clamp(70px,10.5vh,100px);flex-shrink:0}
+.s10cards .sc{flex-direction:column;justify-content:center;gap:clamp(2px,.3vh,4px);padding:clamp(4px,.6vh,8px) clamp(6px,.8vw,12px)}
+.s10cards .slbl{font-size:clamp(8px,.65vw,11px);margin-bottom:0}
+.sc2-row{display:flex;align-items:center;gap:0;min-height:0}
+.sc2-col{display:flex;flex-direction:column;justify-content:center;flex:1;min-width:0;overflow:hidden}
+.sc2-col .sval{font-size:clamp(16px,2vw,32px);line-height:1}
+.sc2-old .sval{font-size:clamp(13px,1.5vw,24px);color:var(--text3)}
+.sc2-old{opacity:.8}
+.sc2-yr{font-size:clamp(7px,.52vw,9px);font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--text3);line-height:1;margin-bottom:1px;display:block}
+.sc2-div{width:1px;background:var(--border);margin:0 clamp(5px,.6vw,10px);align-self:stretch;flex-shrink:0}
+.sc2-col .ssub{font-size:clamp(7px,.52vw,9px)}
 
 /* SLIDE 9 — TABLEAU tout visible, pas de scroll */
 #s9 .sbody{display:flex;flex-direction:column;flex:1;padding:clamp(4px,.7vh,10px) clamp(8px,1.4vw,22px) clamp(28px,4.5vh,46px);overflow:hidden;min-height:0;gap:clamp(3px,.4vh,6px)}
@@ -1122,7 +1125,8 @@ function drawSlide10(){
     var hexLight20=hexLight(cp.hex);
     var row20=document.createElement('div'); row20.className='brow brow-2020';
     var inner20='<div class="blbl">';
-    inner20+='<span class="vx" style="color:var(--text3)"><span class="cmp-year" style="margin-right:.4em">'+cp.lbl20+'</span>'+(cp.v20!==null&&cp.v20>0?fn(cp.v20)+' voix':'')+'</span>';
+    inner20+='<span class="cmp-lbl20">'+cp.lbl20+'</span>';
+    inner20+='<span class="vx" style="color:var(--text3)">'+(cp.v20!==null&&cp.v20>0?fn(cp.v20)+' voix':'')+'</span>';
     inner20+='</div>';
     inner20+='<div class="btrk"><div class="bline"></div>';
     if(p20!==null){
