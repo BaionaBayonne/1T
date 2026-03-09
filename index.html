@@ -93,14 +93,20 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
 
 
 /* SLIDE 10 — COMPARAISON 2020/2026 */
-#s10 .sbody{display:flex;flex-direction:column;flex:1;padding:clamp(8px,1.4vh,20px) clamp(20px,4vw,70px) clamp(32px,5.5vh,56px);gap:clamp(4px,.7vh,10px);overflow:hidden;min-height:0}
-.chart10{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0}
-/* Groupe candidat : titre + 2 barres */
-.cmp-group{display:flex;flex-direction:column;gap:clamp(2px,.3vh,5px);flex:1}
-.cmp-year{font-size:clamp(8px,.68vw,11px);font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);width:clamp(160px,22vw,340px);text-align:right;padding-right:clamp(8px,1.2vw,20px);flex-shrink:0}
+#s10 .sbody{display:flex;flex-direction:column;flex:1;padding:clamp(4px,.7vh,10px) clamp(16px,3vw,50px) clamp(28px,4.5vh,46px);gap:clamp(2px,.3vh,5px);overflow:hidden;min-height:0}
+#s10 .sbody .chart10{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0}
+.cmp-group{display:flex;flex-direction:column;gap:0;flex:1}
+#s10 .blbl{width:clamp(130px,18vw,270px);padding-right:clamp(6px,.9vw,14px)}
+#s10 .blbl .ln{font-size:clamp(11px,1.1vw,17px)}
+#s10 .blbl .cn{font-size:clamp(7px,.6vw,10px)}
+#s10 .blbl .vx{font-size:clamp(9px,.8vw,13px)}
+#s10 .btrk{height:clamp(20px,3.5vh,40px)}
+#s10 .bpct{font-size:clamp(11px,1.2vw,18px)}
+#s10 .bpct-o{font-size:clamp(11px,1.2vw,18px)}
+.cmp-year{font-size:clamp(7px,.58vw,10px);font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--text3);width:clamp(130px,18vw,270px);text-align:right;padding-right:clamp(6px,.9vw,14px);flex-shrink:0}
 .cmp-year.y26{color:var(--text2)}
 .brow-2020 .bfill{opacity:.55}
-.cmp-sep{height:1px;background:var(--border);margin:clamp(2px,.3vh,5px) 0;flex-shrink:0}
+.cmp-sep{height:1px;background:var(--border);margin:clamp(1px,.2vh,3px) 0;flex-shrink:0}
 
 /* SLIDE 9 — TABLEAU tout visible, pas de scroll */
 #s9 .sbody{display:flex;flex-direction:column;flex:1;padding:clamp(4px,.7vh,10px) clamp(8px,1.4vw,22px) clamp(28px,4.5vh,46px);overflow:hidden;min-height:0;gap:clamp(3px,.4vh,6px)}
@@ -1114,7 +1120,7 @@ function drawSlide10(){
       inner20+='</div>';
       if(!wide20) inner20+='<span class="bpct-o" style="color:'+cp.hex+'">'+fp(p20)+'</span>';
     } else {
-      inner20+='<span class="bpct-o" style="color:#ccc;font-style:italic;font-size:clamp(9px,.8vw,13px)">Pas de liste en 2020</span>';
+      if(depBVs.length>0) inner20+='<span class="bpct-o" style="color:#ccc;font-style:italic;font-size:clamp(9px,.8vw,13px)">Pas de liste en 2020</span>';
     }
     inner20+='</div>';
     row20.innerHTML=inner20; grp.appendChild(row20);
