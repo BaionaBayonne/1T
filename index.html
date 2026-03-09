@@ -107,6 +107,14 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Source Sans 3','Se
 .cmp-year.y26{color:var(--text2)}
 .brow-2020 .bfill{opacity:.55}
 .cmp-sep{height:1px;background:var(--border);margin:clamp(1px,.2vh,3px) 0;flex-shrink:0}
+/* Cartes stat page 10 : 2026 | 2020 côte à côte */
+.s10cards{margin-top:clamp(4px,.6vh,8px);height:clamp(70px,11vh,105px)}
+.sc2-row{display:flex;align-items:stretch;flex:1;gap:0;min-height:0}
+.sc2-col{display:flex;flex-direction:column;justify-content:center;flex:1;min-width:0}
+.sc2-old .sval{font-size:clamp(14px,1.8vw,28px);color:var(--text3)}
+.sc2-old{opacity:.75}
+.sc2-yr{font-size:clamp(7px,.55vw,9px);font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);line-height:1;margin-bottom:1px}
+.sc2-div{width:1px;background:var(--border);margin:0 clamp(4px,.5vw,8px);flex-shrink:0}
 
 /* SLIDE 9 — TABLEAU tout visible, pas de scroll */
 #s9 .sbody{display:flex;flex-direction:column;flex:1;padding:clamp(4px,.7vh,10px) clamp(8px,1.4vw,22px) clamp(28px,4.5vh,46px);overflow:hidden;min-height:0;gap:clamp(3px,.4vh,6px)}
@@ -534,7 +542,7 @@ const SHEET_ID='1nxp3CwXHkbcdmAz5PBgHGhZ2rtfXRwhl0ci1971VwX8';
 const SHEET_NAME='1erTour';
 const REFRESH_S=60, SLIDE_MS=12000, TOTAL_BV=30, N_SLIDES=10;
 const SEUIL_2ND=0.10, SEUIL_FUSION=0.05;
-const DATA_2020=[{"bv": 1, "exprimes": 419, "iriart": 65, "berge": 45, "etcheto": 91, "etchegaray": 199, "lesellier": 19}, {"bv": 2, "exprimes": 408, "iriart": 78, "berge": 58, "etcheto": 116, "etchegaray": 139, "lesellier": 17}, {"bv": 3, "exprimes": 331, "iriart": 65, "berge": 58, "etcheto": 91, "etchegaray": 103, "lesellier": 14}, {"bv": 4, "exprimes": 367, "iriart": 68, "berge": 62, "etcheto": 92, "etchegaray": 136, "lesellier": 9}, {"bv": 5, "exprimes": 475, "iriart": 88, "berge": 77, "etcheto": 108, "etchegaray": 182, "lesellier": 20}, {"bv": 6, "exprimes": 584, "iriart": 85, "berge": 93, "etcheto": 157, "etchegaray": 211, "lesellier": 38}, {"bv": 7, "exprimes": 474, "iriart": 92, "berge": 79, "etcheto": 131, "etchegaray": 147, "lesellier": 25}, {"bv": 8, "exprimes": 408, "iriart": 55, "berge": 58, "etcheto": 108, "etchegaray": 162, "lesellier": 25}, {"bv": 9, "exprimes": 431, "iriart": 59, "berge": 47, "etcheto": 139, "etchegaray": 154, "lesellier": 32}, {"bv": 10, "exprimes": 417, "iriart": 53, "berge": 63, "etcheto": 96, "etchegaray": 173, "lesellier": 32}, {"bv": 11, "exprimes": 408, "iriart": 54, "berge": 51, "etcheto": 100, "etchegaray": 166, "lesellier": 37}, {"bv": 12, "exprimes": 361, "iriart": 45, "berge": 37, "etcheto": 106, "etchegaray": 157, "lesellier": 16}, {"bv": 13, "exprimes": 234, "iriart": 27, "berge": 25, "etcheto": 91, "etchegaray": 81, "lesellier": 10}, {"bv": 14, "exprimes": 387, "iriart": 54, "berge": 49, "etcheto": 87, "etchegaray": 175, "lesellier": 22}, {"bv": 15, "exprimes": 411, "iriart": 53, "berge": 22, "etcheto": 133, "etchegaray": 181, "lesellier": 22}, {"bv": 16, "exprimes": 392, "iriart": 78, "berge": 50, "etcheto": 129, "etchegaray": 123, "lesellier": 12}, {"bv": 17, "exprimes": 304, "iriart": 29, "berge": 36, "etcheto": 103, "etchegaray": 121, "lesellier": 15}, {"bv": 18, "exprimes": 570, "iriart": 57, "berge": 58, "etcheto": 109, "etchegaray": 307, "lesellier": 39}, {"bv": 19, "exprimes": 462, "iriart": 37, "berge": 38, "etcheto": 82, "etchegaray": 268, "lesellier": 37}, {"bv": 20, "exprimes": 459, "iriart": 45, "berge": 46, "etcheto": 87, "etchegaray": 252, "lesellier": 29}, {"bv": 21, "exprimes": 397, "iriart": 47, "berge": 30, "etcheto": 119, "etchegaray": 164, "lesellier": 37}, {"bv": 22, "exprimes": 260, "iriart": 34, "berge": 30, "etcheto": 87, "etchegaray": 89, "lesellier": 20}, {"bv": 23, "exprimes": 402, "iriart": 46, "berge": 42, "etcheto": 142, "etchegaray": 147, "lesellier": 25}, {"bv": 24, "exprimes": 422, "iriart": 44, "berge": 26, "etcheto": 174, "etchegaray": 157, "lesellier": 21}, {"bv": 25, "exprimes": 479, "iriart": 42, "berge": 50, "etcheto": 200, "etchegaray": 169, "lesellier": 18}, {"bv": 26, "exprimes": 435, "iriart": 38, "berge": 31, "etcheto": 176, "etchegaray": 176, "lesellier": 14}, {"bv": 27, "exprimes": 340, "iriart": 25, "berge": 24, "etcheto": 167, "etchegaray": 107, "lesellier": 17}, {"bv": 28, "exprimes": 282, "iriart": 15, "berge": 14, "etcheto": 141, "etchegaray": 100, "lesellier": 12}, {"bv": 29, "exprimes": 457, "iriart": 75, "berge": 40, "etcheto": 154, "etchegaray": 167, "lesellier": 21}, {"bv": 30, "exprimes": 396, "iriart": 44, "berge": 25, "etcheto": 107, "etchegaray": 196, "lesellier": 24}];  // 10% exprimés = 2nd tour, 5% exprimés = fusion autorisée
+const DATA_2020=[{"bv": 1, "inscrits": 931, "votants": 431, "exprimes": 419, "iriart": 65, "berge": 45, "etcheto": 91, "etchegaray": 199, "lesellier": 19}, {"bv": 2, "inscrits": 951, "votants": 414, "exprimes": 408, "iriart": 78, "berge": 58, "etcheto": 116, "etchegaray": 139, "lesellier": 17}, {"bv": 3, "inscrits": 875, "votants": 342, "exprimes": 331, "iriart": 65, "berge": 58, "etcheto": 91, "etchegaray": 103, "lesellier": 14}, {"bv": 4, "inscrits": 909, "votants": 374, "exprimes": 367, "iriart": 68, "berge": 62, "etcheto": 92, "etchegaray": 136, "lesellier": 9}, {"bv": 5, "inscrits": 1112, "votants": 479, "exprimes": 475, "iriart": 88, "berge": 77, "etcheto": 108, "etchegaray": 182, "lesellier": 20}, {"bv": 6, "inscrits": 1234, "votants": 595, "exprimes": 584, "iriart": 85, "berge": 93, "etcheto": 157, "etchegaray": 211, "lesellier": 38}, {"bv": 7, "inscrits": 1226, "votants": 488, "exprimes": 474, "iriart": 92, "berge": 79, "etcheto": 131, "etchegaray": 147, "lesellier": 25}, {"bv": 8, "inscrits": 1070, "votants": 422, "exprimes": 408, "iriart": 55, "berge": 58, "etcheto": 108, "etchegaray": 162, "lesellier": 25}, {"bv": 9, "inscrits": 1062, "votants": 436, "exprimes": 431, "iriart": 59, "berge": 47, "etcheto": 139, "etchegaray": 154, "lesellier": 32}, {"bv": 10, "inscrits": 1076, "votants": 424, "exprimes": 417, "iriart": 53, "berge": 63, "etcheto": 96, "etchegaray": 173, "lesellier": 32}, {"bv": 11, "inscrits": 1032, "votants": 418, "exprimes": 408, "iriart": 54, "berge": 51, "etcheto": 100, "etchegaray": 166, "lesellier": 37}, {"bv": 12, "inscrits": 901, "votants": 366, "exprimes": 361, "iriart": 45, "berge": 37, "etcheto": 106, "etchegaray": 157, "lesellier": 16}, {"bv": 13, "inscrits": 683, "votants": 242, "exprimes": 234, "iriart": 27, "berge": 25, "etcheto": 91, "etchegaray": 81, "lesellier": 10}, {"bv": 14, "inscrits": 1035, "votants": 391, "exprimes": 387, "iriart": 54, "berge": 49, "etcheto": 87, "etchegaray": 175, "lesellier": 22}, {"bv": 15, "inscrits": 1374, "votants": 417, "exprimes": 411, "iriart": 53, "berge": 22, "etcheto": 133, "etchegaray": 181, "lesellier": 22}, {"bv": 16, "inscrits": 970, "votants": 401, "exprimes": 392, "iriart": 78, "berge": 50, "etcheto": 129, "etchegaray": 123, "lesellier": 12}, {"bv": 17, "inscrits": 878, "votants": 315, "exprimes": 304, "iriart": 29, "berge": 36, "etcheto": 103, "etchegaray": 121, "lesellier": 15}, {"bv": 18, "inscrits": 1368, "votants": 580, "exprimes": 570, "iriart": 57, "berge": 58, "etcheto": 109, "etchegaray": 307, "lesellier": 39}, {"bv": 19, "inscrits": 1021, "votants": 474, "exprimes": 462, "iriart": 37, "berge": 38, "etcheto": 82, "etchegaray": 268, "lesellier": 37}, {"bv": 20, "inscrits": 1100, "votants": 469, "exprimes": 459, "iriart": 45, "berge": 46, "etcheto": 87, "etchegaray": 252, "lesellier": 29}, {"bv": 21, "inscrits": 1108, "votants": 404, "exprimes": 397, "iriart": 47, "berge": 30, "etcheto": 119, "etchegaray": 164, "lesellier": 37}, {"bv": 22, "inscrits": 913, "votants": 272, "exprimes": 260, "iriart": 34, "berge": 30, "etcheto": 87, "etchegaray": 89, "lesellier": 20}, {"bv": 23, "inscrits": 1182, "votants": 414, "exprimes": 402, "iriart": 46, "berge": 42, "etcheto": 142, "etchegaray": 147, "lesellier": 25}, {"bv": 24, "inscrits": 1172, "votants": 428, "exprimes": 422, "iriart": 44, "berge": 26, "etcheto": 174, "etchegaray": 157, "lesellier": 21}, {"bv": 25, "inscrits": 1348, "votants": 496, "exprimes": 479, "iriart": 42, "berge": 50, "etcheto": 200, "etchegaray": 169, "lesellier": 18}, {"bv": 26, "inscrits": 1251, "votants": 450, "exprimes": 435, "iriart": 38, "berge": 31, "etcheto": 176, "etchegaray": 176, "lesellier": 14}, {"bv": 27, "inscrits": 1068, "votants": 355, "exprimes": 340, "iriart": 25, "berge": 24, "etcheto": 167, "etchegaray": 107, "lesellier": 17}, {"bv": 28, "inscrits": 1056, "votants": 292, "exprimes": 282, "iriart": 15, "berge": 14, "etcheto": 141, "etchegaray": 100, "lesellier": 12}, {"bv": 29, "inscrits": 1138, "votants": 468, "exprimes": 457, "iriart": 75, "berge": 40, "etcheto": 154, "etchegaray": 167, "lesellier": 21}, {"bv": 30, "inscrits": 1094, "votants": 409, "exprimes": 396, "iriart": 44, "berge": 25, "etcheto": 107, "etchegaray": 196, "lesellier": 24}];  // 10% exprimés = 2nd tour, 5% exprimés = fusion autorisée
 const BV_NAMES={"1": "Mairie", "2": "Cathédrale", "3": "Lauga", "4": "Petit Bayonne", "5": "Gare", "6": "Als. Lorraine", "7": "St-Esprit Jaurès", "8": "St Léon", "9": "Lahubiague", "10": "Marracq Panorama", "11": "Marracq Biraben", "12": "Polo Beyris Sud", "13": "Polo Beyris Nord", "14": "Saint Amand", "15": "Prissé", "16": "Mousserolles", "17": "Balichon Ouest", "18": "Balichon Est", "19": "Arènes Tribunal", "20": "Arènes Ouest", "21": "St Bernard", "22": "Citadelle", "23": "Coumères", "24": "Caradoc", "25": "Habas", "26": "Ste Croix / Stade DD", "27": "Pl. des Gascons", "28": "Ste Croix Breuer Est", "29": "Séqué", "30": "Arrousets"};
 
 // Couleurs : LFI=rouge, Etchegaray=bleu, Etcheto=rose clair (contraste avec LFI rouge)
@@ -1057,7 +1065,8 @@ function drawSlide10(){
       long:'Bayonne insoumise et populaire',
       v26:g.pereira, exp26:g.exprimes,
       v20:null, exp20:exp20,
-      lbl20:'Pas de liste en 2020'
+      lbl20:'Pas de liste en 2020',
+      noList:true
     },
     {
       hex:'#5a2d14',
@@ -1120,13 +1129,54 @@ function drawSlide10(){
       inner20+='</div>';
       if(!wide20) inner20+='<span class="bpct-o" style="color:'+cp.hex+'">'+fp(p20)+'</span>';
     } else {
-      if(depBVs.length>0) inner20+='<span class="bpct-o" style="color:#ccc;font-style:italic;font-size:clamp(9px,.8vw,13px)">Pas de liste en 2020</span>';
+      if(cp.noList&&depBVs.length>0) inner20+='<span class="bpct-o" style="color:#ccc;font-style:italic;font-size:clamp(9px,.8vw,13px)">Pas de liste en 2020</span>';
     }
     inner20+='</div>';
     row20.innerHTML=inner20; grp.appendChild(row20);
 
     c.appendChild(grp);
   });
+
+  // ── Cartes participation/abstention/blancs/nuls (comme page 1 mais 2020 vs 2026) ──
+  var ins20=d20.reduce(function(a,r){return a+r.inscrits;},0);
+  var vot20=d20.reduce(function(a,r){return a+r.votants;},0);
+  var abs20=d20.reduce(function(a,r){return a+r.inscrits-r.votants;},0);
+  var bla20=d20.reduce(function(a,r){return a+(r.votants-r.exprimes>0?Math.round((r.votants-r.exprimes)*0.6):0);},0);
+  // blancs/nuls 2020 non disponibles dans le CSV — on utilise votants-exprimes comme proxy
+  var bnu20=d20.reduce(function(a,r){return a+(r.votants-r.exprimes);},0);
+
+  function cv2(v26,base26,v20,base20,lbl,cls,sub26,sub20){
+    var p26=base26>0?v26/base26*100:null;
+    var p20=base20>0?v20/base20*100:null;
+    var h='<div class="sc '+cls+'">';
+    h+='<div class="slbl">'+lbl+'</div>';
+    h+='<div class="sc2-row">';
+    h+='<div class="sc2-col">';
+    h+='<div class="sc2-yr">2026</div>';
+    h+='<div class="sval">'+(p26!==null?fp(p26):'–')+'</div>';
+    h+='<div class="ssub">'+sub26+'</div>';
+    h+='</div>';
+    h+='<div class="sc2-div"></div>';
+    h+='<div class="sc2-col sc2-old">';
+    h+='<div class="sc2-yr">2020</div>';
+    h+='<div class="sval">'+(p20!==null?fp(p20):'–')+'</div>';
+    h+='<div class="ssub">'+sub20+'</div>';
+    h+='</div>';
+    h+='</div></div>';
+    return h;
+  }
+
+  var cards=document.createElement('div'); cards.className='scards s10cards';
+  var sub26part=g.inscrits>0?fn(g.votants)+' / '+fn(g.inscrits):'';
+  var sub20part=ins20>0?fn(vot20)+' / '+fn(ins20):'';
+  var sub26abst=g.abstentions>0?fn(g.abstentions)+' abst.':'';
+  var sub20abst=abs20>0?fn(abs20)+' abst.':'';
+  cards.innerHTML=
+    cv2(g.votants,g.inscrits,   vot20,ins20,  'Participation','p',sub26part,sub20part)+
+    cv2(g.abstentions,g.inscrits,abs20,ins20,  'Abstention',   'a',sub26abst,sub20abst)+
+    cv2(g.blancs,g.votants,     0,vot20,       'Blancs',       'b',g.blancs!==null?fn(g.blancs)+' bulletins':'','n.d.')+
+    cv2(g.nuls,g.votants,       0,vot20,       'Nuls',         'n',g.nuls!==null?fn(g.nuls)+' bulletins':'','n.d.');
+  c.appendChild(cards);
 }
 
 function refresh(){
